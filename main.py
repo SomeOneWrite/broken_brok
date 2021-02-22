@@ -11,7 +11,7 @@ from TimeCost import TimeCost
 startime = datetime.strptime("20210120|000000", '%Y%m%d|%H%M%S')
 endtime = datetime.strptime("20220121|130000", '%Y%m%d|%H%M%S')
 
-alert_precent = 104.0
+alert_precent = 106.0
 
 computed_alert_precent = alert_precent / 10000
 data = list()
@@ -54,7 +54,7 @@ print(
         len(filtered_data), middle_value, min, max))
 
 
-def sectionMeaserment(data: list, section_size=6):
+def sectionMeaserment(data: list, section_size=8):
     for section_i in range(0, len(data) - 1, section_size):
         last = section_i + section_size - 1
         if last > len(data):
@@ -74,10 +74,10 @@ def sectionMeaserment(data: list, section_size=6):
             continue
         current_middle_value, current_max, current_min = getMeanSquareDeviation([last_it, next_it])
 
-        if (current_middle_value / middle_value / 100) > computed_alert_precent:
+        if (next_it.cost / middle_value / 100) > computed_alert_precent:
             st = ' ; '.join([str(x) for x in section_data])
 
-            print("{} \n{} || {}  percent={} val1={} val2={}".format(st, last_it, next_it,
+            print("{} \n{} ; {}  percent={} val1={} val2={}".format(st, last_it, next_it,
                                                                 (current_middle_value / middle_value / 100),
                                                                 middle_value, current_middle_value))
 

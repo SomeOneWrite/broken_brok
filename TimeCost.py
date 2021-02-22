@@ -21,6 +21,6 @@ class TimeCost:
         return self.date < other.date
 
     def __str__(self):
-        return "{} || {}".format(self.date, self.cost)
+        return "{} - {}".format(self.date, self.cost)
 
 
