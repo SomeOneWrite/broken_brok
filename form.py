@@ -1,15 +1,12 @@
 from TimeCost import TimeCost
 
 data = list()
-with open('data.csv', 'r') as file:
+with open('data.txt', 'r') as file:
     lis = [line.split(';') for line in file]
     for i in range(0, len(lis), 1):
-        temp = TimeCost(lis[i], True)
+        temp = TimeCost(lis[i], 2)
         data.append(temp)
-data.sort()
-with open('data2.csv', 'w') as file:
-    k = 1
+with open('data1.csv', 'w') as file:
     for key in data:
-        file.write("{};{}\n".format(k, key.cost))
-        k += 1
+        file.write("{};{}\n".format(key.date.strftime('%m.%d.%Y %H:%M'), key.cost))
     file.close()

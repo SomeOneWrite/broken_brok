@@ -14,11 +14,11 @@ class TradeEmulator:
         if self.func:
             for key in self.data:
                 self.current_cost = key.cost
-                self.func(key.cost)
+                self.func(key.cost, key.date)
 
     def _parseData(self):
         self.data = list()
-        with open('data.csv', 'r') as file:
+        with open('data1.csv', 'r') as file:
             lis = [line.split(';') for line in file]
             for i in range(0, len(lis), 1):
                 temp = TimeCost(lis[i], 1)
