@@ -6,8 +6,10 @@ with open('data.csv', 'r') as file:
     for i in range(0, len(lis), 1):
         temp = TimeCost(lis[i], True)
         data.append(temp)
-
-with open('data1.csv', 'w') as file:
+data.sort()
+with open('data2.csv', 'w') as file:
+    k = 1
     for key in data:
-        file.write("{};{}\n".format(key.date.strftime('%m.%d.%Y %H:%M'), key.cost * 100))
+        file.write("{};{}\n".format(k, key.cost))
+        k += 1
     file.close()
